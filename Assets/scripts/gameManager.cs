@@ -13,17 +13,19 @@ public class GameManager : MonoBehaviour
     public AudioClip scoreSound;      // Public reference to the sound clip played on score
     public AudioClip winSound;        // Public reference to the sound clip played on win
 
+    // Ensures that only one instance of the GameManager exists using the Singleton pattern,
+    // and initializes the AudioSource component for handling game sounds.
     private void Awake()
     {
         // Singleton pattern to ensure only one GameManager exists
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);  // Keep the GameManager persistent between scenes
+            DontDestroyOnLoad(gameObject);  
         }
         else
         {
-            Destroy(gameObject);  // Avoid duplicates
+            Destroy(gameObject);  
             return;
         }
 
@@ -56,21 +58,21 @@ public class GameManager : MonoBehaviour
         if (playerIndex == 1)
         {
             player1Score++;
-            FindObjectOfType<GameController>().UpdateScoreUI(1, player1Score);  // Update Player 1's score in the UI
+            FindObjectOfType<GameController>().UpdateScoreUI(1, player1Score);  
         }
         else if (playerIndex == 2)
         {
             player2Score++;
-            FindObjectOfType<GameController>().UpdateScoreUI(2, player2Score);  // Update Player 2's score in the UI
+            FindObjectOfType<GameController>().UpdateScoreUI(2, player2Score);  
         }
 
-        // Play the score sound
+        
         if (audioSource != null && scoreSound != null)
         {
-            audioSource.PlayOneShot(scoreSound);  // Play the score sound when a player scores
+            audioSource.PlayOneShot(scoreSound);  
         }
 
-        // Add a 0.5-second delay before checking for the win
+        
         yield return new WaitForSeconds(0.5f);
 
         // Check for a winner after the delay
@@ -82,18 +84,17 @@ public class GameManager : MonoBehaviour
     {
         if (player1Score >= maxScore)
         {
-            // Play the winning sound for Player 1
+           
             PlayWinningSound();
 
-            // Player 1 wins
+           
             FindObjectOfType<GameController>().GameOver("Player 1 Wins!");
         }
         else if (player2Score >= maxScore)
         {
-            // Play the winning sound for Player 2
+            
             PlayWinningSound();
 
-            // Player 2 wins
             FindObjectOfType<GameController>().GameOver("Player 2 Wins!");
         }
     }
@@ -101,10 +102,10 @@ public class GameManager : MonoBehaviour
     // Play the win sound when a player wins
     private void PlayWinningSound()
     {
-        // Play the win sound
+        
         if (audioSource != null && winSound != null)
         {
-            audioSource.PlayOneShot(winSound);  // Play the win sound
+            audioSource.PlayOneShot(winSound);  
         }
     }
 }

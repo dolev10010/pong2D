@@ -12,105 +12,108 @@ public class GameController : MonoBehaviour
     public Text player1ScoreText;  // Text UI for Player 1's score
     public Text player2ScoreText;  // Text UI for Player 2's score
 
-
+    //Initializes the game by ensuring UI elements are assigned and displays the Start button.
     private void Start()
     {
-        // Ensure that critical UI elements are assigned, otherwise log an error
         if (startButton == null || playAgainButton == null || winMessageText == null)
         {
             Debug.LogError("Start Button, Play Again Button, or Win Message Text is not assigned in the Inspector.");
             return;
         }
 
-        ShowStartButton();  // Initially show the Start Button and hide others
+        ShowStartButton();  
     }
 
+    //Displays the Start button and pauses the game until the player starts it.
     private void ShowStartButton()
     {
         if (startButton != null)
         {
-            startButton.SetActive(true);  // Show Start Button
+            startButton.SetActive(true);  
         }
 
         if (playAgainButton != null)
         {
-            playAgainButton.SetActive(false);  // Hide Play Again Button
+            playAgainButton.SetActive(false);  
         }
 
         if (winMessageText != null)
         {
-            winMessageText.gameObject.SetActive(false);  // Hide win message at the start
+            winMessageText.gameObject.SetActive(false);  
         }
 
-        // Pause the game
-        Time.timeScale = 0f;  // Stop the game simulation
+       
+        Time.timeScale = 0f;  
     }
 
+    //Begins the game by hiding the Start button and resetting the ball and paddles.
     public void StartGame()
     {
         if (startButton != null)
         {
-            startButton.SetActive(false);  // Hide Start Button when the game begins
+            startButton.SetActive(false);  
         }
 
         if (playAgainButton != null)
         {
-            playAgainButton.SetActive(false);  // Hide Play Again Button
+            playAgainButton.SetActive(false);  
         }
 
         if (winMessageText != null)
         {
-            winMessageText.gameObject.SetActive(false);  // Hide the win message when the game starts
+            winMessageText.gameObject.SetActive(false);  
         }
 
-        // Unpause the game
-        Time.timeScale = 1f;  // Resume the game
+        
+        Time.timeScale = 1f;  
 
         // Reset ball and paddles to their starting positions
         ResetBallAndPaddles();
     }
 
+    // Resets the game to its initial state, including scores and positions.
     public void ResetGame()
     {
-        // Call GameManager's reset logic without causing a recursive loop
+        
         if (GameManager.Instance != null)
         {
             GameManager.Instance.ResetGame();
         }
 
-        // Hide Play Again button after reset
+      
         if (playAgainButton != null)
         {
-            playAgainButton.SetActive(false);  // Hide the Play Again Button when resetting the game
+            playAgainButton.SetActive(false);  
         }
 
-        // Reset and hide the win message
+        
         if (winMessageText != null)
         {
-            winMessageText.text = "";  // Reset the win message to an empty string
-            winMessageText.gameObject.SetActive(false);  // Hide the win message
+            winMessageText.text = "";  
+            winMessageText.gameObject.SetActive(false);  
         }
 
-        // Reset the score UI to 0 for both players
-        UpdateScoreUI(1, 0);  // Reset Player 1's score display
-        UpdateScoreUI(2, 0);  // Reset Player 2's score display
+        
+        UpdateScoreUI(1, 0);  
+        UpdateScoreUI(2, 0);  
 
         // Reset ball and paddles to their default positions
         ResetBallAndPaddles();
 
-        // Unpause the game
-        Time.timeScale = 1f;  // Resume the game
+        
+        Time.timeScale = 1f;  
     }
 
+    // Resets the ball and paddles to their starting positions.
     private void ResetBallAndPaddles()
     {
-        // Reset ball position
+       
         if (ball != null)
         {
             ball.transform.position = Vector2.zero;
         }
 
-        // Optionally reset paddles to their default position
+       
         if (paddles != null)
         {
             foreach (GameObject paddle in paddles)
@@ -122,16 +125,18 @@ public class GameController : MonoBehaviour
             }
         }
     }
+
+    // Updates the score UI for a specific player.
     public void UpdateScoreUI(int playerIndex, int score)
     {
         if (playerIndex == 1 && player1ScoreText != null)
         {
-            player1ScoreText.text = score.ToString();  // Update Player 1's score
+            player1ScoreText.text = score.ToString();  
 
         }
         else if (playerIndex == 2 && player2ScoreText != null)
         {
-            player2ScoreText.text = score.ToString();  // Update Player 2's score
+            player2ScoreText.text = score.ToString();  
         }
     }
 
@@ -141,16 +146,15 @@ public class GameController : MonoBehaviour
     {
         if (playAgainButton != null)
         {
-            playAgainButton.SetActive(true);  // Show the Play Again button
+            playAgainButton.SetActive(true);  
         }
 
         if (winMessageText != null)
         {
-            winMessageText.gameObject.SetActive(true);    // Show the win message
-            winMessageText.text = winnerMessage;          // Set the win message text (e.g., "Player 1 Wins!")
+            winMessageText.gameObject.SetActive(true);    
+            winMessageText.text = winnerMessage;          
         }
 
-        // Pause the game
-        Time.timeScale = 0f;  // Pause the game simulation
+        Time.timeScale = 0f;  
     }
 }
