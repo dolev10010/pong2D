@@ -42,16 +42,3 @@ The game uses sound effects to enhance the gameplay experience:
 - Winning Sound: Played when a player wins the game.
 - The sounds are managed using the AudioSource component attached to the GameManager   object. Here’s how the sounds are handled in the script:
 
-# Key Scripts Overview
-
-## 1. BallController.cs
-Controls the ball's movement, speed, and interaction with the goals. It resets the ball when a player scores and ensures the ball's speed remains within defined limits.
-
-## 2. PaddleController.cs
-Handles paddle movement for both players. The paddles move vertically, and their movement is clamped within the game boundaries.
-
-## 3. GameManager.cs
-Manages the game logic, including score tracking, resetting the game, determining the winner, and playing sound effects.
-
-## 4. GameController.cs
-Handles the game UI, such as starting the game, displaying the win message, and resetting the game.
