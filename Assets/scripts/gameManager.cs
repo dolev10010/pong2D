@@ -5,16 +5,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public int player1Score = 0;  // Tracks Player 1's score
-    public int player2Score = 0;  // Tracks Player 2's score
+    public int player1Score = 0;
+    public int player2Score = 0;
     public int maxScore = 5;      // The score required to win the game
 
-    private AudioSource audioSource;  // Private reference to the AudioSource component
-    public AudioClip scoreSound;      // Public reference to the sound clip played on score
-    public AudioClip winSound;        // Public reference to the sound clip played on win
+    private AudioSource audioSource;
+    public AudioClip scoreSound;
+    public AudioClip winSound;
 
-    // Ensures that only one instance of the GameManager exists using the Singleton pattern,
-    // and initializes the AudioSource component for handling game sounds.
+    // Ensures that only one instance of the GameManager exists using the Singleton pattern
     private void Awake()
     {
         // Singleton pattern to ensure only one GameManager exists

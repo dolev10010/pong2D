@@ -3,8 +3,8 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     public float speed = 10f;       // Starting speed of the ball
-    public float maxSpeed = 15f;    // Maximum speed of the ball
-    public float minSpeed = 10f;    // Minimum speed of the ball
+    public float maxSpeed = 15f;
+    public float minSpeed = 10f;
 
     private Rigidbody2D rb;
     private Vector2 initialVelocity;  // Cache to avoid creating new vectors every time

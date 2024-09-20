@@ -5,7 +5,7 @@ public class PaddleController : MonoBehaviour
     public float speed = 10f;      // Speed at which the paddle moves.
     public bool isPlayer1;         // Boolean to check if this paddle belongs to Player 1.
 
-    private Rigidbody2D rb;        // Reference to the Rigidbody2D component for movement.
+    private Rigidbody2D rb;
     private float minY, maxY;      // Boundaries for paddle movement.
     private float paddleHeight;    // Height of the paddle to adjust boundary calculations.
 
