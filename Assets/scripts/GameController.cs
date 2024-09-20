@@ -3,11 +3,11 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject startButton;      // Reference to Start Button
-    public GameObject playAgainButton;  // Reference to Play Again Button
-    public Text winMessageText;         // Reference to Win Message Text
-    public GameObject ball;             // Reference to the Ball
-    public GameObject[] paddles;        // References to the Paddles
+    public GameObject startButton;
+    public GameObject playAgainButton;
+    public Text winMessageText;
+    public GameObject ball;
+    public GameObject[] paddles;
 
     public Text player1ScoreText;  // Text UI for Player 1's score
     public Text player2ScoreText;  // Text UI for Player 2's score
